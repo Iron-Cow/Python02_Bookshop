@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from account.urls import urlpatterns as account_urls
+from products.urls import urlpatterns as products_urls
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
@@ -24,4 +25,5 @@ urlpatterns = [
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token-obtain'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token-refresh'),
     path('api/v1/users/', include(account_urls), name='user-operations'),
+    path('api/v1/books/', include(products_urls), name='products-operations'),
 ]
